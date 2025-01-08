@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 import { shortenUrl, getOriginalUrl, getTopDomains } from "../services/url.service";
 
-export const shortenUrlController = (req: Request, res: Response) => {
+export const shortenUrlController = (req: Request, res: Response):any => {
   const { originalUrl } = req.body;
   if (!originalUrl) {
     return res.status(400).json({ error: "Original URL is required." });
   }
 
-  const shortUrl = shortenUrl(originalUrl);
+  const shortUrl = shortenUrl(originalUrl); 
   res.json({ originalUrl, shortUrl });
 };
 
-export const redirectUrlController = (req: Request, res: Response) => {
+export const redirectUrlController = (req: Request, res: Response):any => {
   const { shortUrl } = req.params;
   const originalUrl = getOriginalUrl(shortUrl);
 
